@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <style>
+        /* Flexbox layout to align calendar and form */
+        .reservation-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .form-section {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .calendar-section {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* General styling for the form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Flexbox for form rows (label + input) */
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            width: 150px; /* Set a fixed width for labels to align */
+        }
+
+        input, textarea {
+            flex: 1;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #c26e0d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #a25908;
+        }
+
+        /* Aligns the special requests textarea correctly */
+        textarea {
+            resize: vertical;
+        }
+
+        /* Align submit button below the calendar */
+        .submit-button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Reservations</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="hours.html">Hours</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="reservation-container">
+            <!-- Calendar section on the left -->
+            <div class="calendar-section">
+                <label for="reservation-date">Reservation Date:</label>
+                <input type="text" id="reservation-date" name="date" required>
+
+                <!-- Submit button under the calendar, aligned vertically -->
+                <div class="submit-button-container">
+                    <button type="submit" form="reservation-form">Submit Reservation</button>
+                </div>
+            </div>
+
+            <!-- Form section on the right -->
+            <div class="form-section">
+                <h2>Make a Reservation</h2>
+                <form id="reservation-form">
+                    <div class="form-row">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="time">Reservation Time:</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="guests">Number of Guests:</label>
+                        <input type="number" id="guests" name="guests" min="1" max="20" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="requests">Special Requests:</label>
+                        <textarea id="requests" name="requests" rows="4" cols="50" placeholder="Add any special requests..."></textarea>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Māori Kai Restaurant - Bay of Islands</p>
+    </footer>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- JavaScript to handle form submission and pop-up confirmation -->
+    <script>
+        // Initialize Flatpickr with inline calendar
+        flatpickr("#reservation-date", {
+            inline: true, // Makes the calendar always visible
+            minDate: "today" // Disallow selecting past dates
+        });
+
+        // JavaScript to handle the form submission and show pop-up confirmation
+        document.getElementById("reservation-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Show confirmation pop-up
+            alert("Your booking has been confirmed!");
+
+            // Reset the form after submission
+            document.getElementById("reservation-form").reset();
+        });
+    </script>
+
+</body>
+
+</html>

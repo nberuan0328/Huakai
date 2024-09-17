@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #c26e0d;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+section {
+    padding: 10px;
+    text-align: center;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.menu-item img {
+    margin-right: 10px;
+}
+
+.menu-item p {
+    text-align: left;
+    margin: 0;
+    max-width: 200px;
+}
+
+/* Ensure menu images and text stay aligned for smaller screens */
+@media (max-width: 768px) {
+    .menu-item {
+        flex-direction: column;
+    }
+
+    .menu-item img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* Styling specifically for the non-alcoholic beverages */
+.non-alcoholic-section .menu-item {
+    display: flex;
+    justify-content: space-between;  /* Align name and price on the same line */
+    padding: 1px 0;  /* Adds minimal space between each item */
+}
+
+.non-alcoholic-section .drink-name {
+    flex: 1;  /* Allow the name to take up most of the space */
+    text-align: center;
+    margin-right: 1px;  /* Smaller space between name and price */
+}
+
+.non-alcoholic-section .drink-price {
+    flex: 0;
+    text-align: center;
+    min-width: 1px;  /* Keeps the price aligned properly */
+}
+
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
